@@ -1,0 +1,18 @@
+{
+  "name": "mern-ecommerce",
+  "version": "1.0.0",
+  "description": "Full-Stack MERN E-commerce Internship Capstone Project",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "seed": "cd backend && npm run seed",
+    "build": "cd frontend && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "author": "MERN Internship Project",
+  "license": "MIT"
+}
