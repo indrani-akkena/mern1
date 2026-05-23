@@ -6,7 +6,7 @@ const Product = require('../models/Product');
 dotenv.config();
 
 const users = [
-  { name: 'Admin User',    email: 'admin@shopmart.com',   password: 'admin123',  role: 'admin' },
+  { name: 'Admin User',    email: 'admin@shopmart.com',   password: 'admin1234',  role: 'admin' },
   { name: 'John Doe',      email: 'john@example.com',     password: 'john123',   role: 'user' },
   { name: 'Priya Sharma',  email: 'priya@example.com',    password: 'priya123',  role: 'user' }
 ];
@@ -130,14 +130,17 @@ const seedDB = async () => {
     await User.deleteMany();
     await Product.deleteMany();
 
-    const createdUsers = await User.insertMany(users);
+    const createdUsers = [];
+    for (const user of users) {
+      createdUsers.push(await User.create(user));
+    }
     console.log(`✅ ${createdUsers.length} users seeded`);
 
     const createdProducts = await Product.insertMany(products);
     console.log(`✅ ${createdProducts.length} products seeded`);
 
     console.log('\n🎉 Database seeded successfully!');
-    console.log('Admin login: admin@shopmart.com / admin123');
+    console.log('Admin login: admin@shopmart.com / admin1234');
     console.log('User login:  john@example.com / john123');
     process.exit(0);
   } catch (error) {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeaturedProducts } from '../redux/slices/productSlice';
 import ProductCard from '../components/product/ProductCard';
 
+
 const CATEGORIES = [
   { name: 'Electronics',   icon: '💻', color: 'bg-blue-50 text-blue-600' },
   { name: 'Clothing',      icon: '👕', color: 'bg-purple-50 text-purple-600' },
@@ -18,7 +19,7 @@ const CATEGORIES = [
 const HomePage = () => {
   const dispatch = useDispatch();
   const { featured, loading } = useSelector(state => state.products);
-
+  const { userInfo } = useSelector(state => state.auth);
   useEffect(() => { dispatch(fetchFeaturedProducts()); }, [dispatch]);
 
   return (
@@ -46,6 +47,16 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Admin Banner */}
+{userInfo?.role === 'admin' && (
+  <div className="bg-purple-600 text-white py-3 px-4 text-center">
+    <span className="font-semibold">You are logged in as Admin. </span>
+    <Link to="/admin" className="underline font-bold hover:text-purple-200 ml-2">
+      Go to Admin Panel →
+    </Link>
+  </div>
+)}
 
       {/* Stats */}
       <section className="bg-white border-b border-gray-100 py-8">

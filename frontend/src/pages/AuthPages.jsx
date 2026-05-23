@@ -12,7 +12,15 @@ export const LoginPage = () => {
   const navigate   = useNavigate();
   const { userInfo, loading, error } = useSelector(state => state.auth);
 
-  useEffect(() => { if (userInfo) navigate('/'); }, [userInfo, navigate]);
+  useEffect(() => {
+  if (userInfo) {
+    if (userInfo.role === 'admin') {
+      navigate('/admin');
+    } else {
+      navigate('/');
+    }
+  }
+}, [userInfo, navigate]);
   useEffect(() => { if (error) { toast.error(error); dispatch(clearError()); } }, [error, dispatch]);
 
   const handleSubmit = async (e) => {
@@ -64,7 +72,7 @@ export const LoginPage = () => {
           {/* Demo credentials */}
           <div className="mt-4 p-3 bg-blue-50 rounded-lg text-xs text-blue-700">
             <p className="font-semibold mb-1">Demo Credentials:</p>
-            <p>Admin: admin@shopmart.com / admin123</p>
+            <p>Admin: admin@shopmart.com / admin1234</p>
             <p>User:  john@example.com / john123</p>
           </div>
         </div>

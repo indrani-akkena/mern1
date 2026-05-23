@@ -160,7 +160,7 @@ This creates:
 **Demo Credentials:**
 | Role  | Email                    | Password   |
 |-------|--------------------------|------------|
-| Admin | admin@shopmart.com       | admin123   |
+| Admin | admin@shopmart.com       | admin1234  |
 | User  | john@example.com         | john123    |
 | User  | priya@example.com        | priya123   |
 
