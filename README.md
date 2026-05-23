@@ -316,3 +316,5 @@ Built as the **MERN Full-Stack Development Internship Capstone Project**.
 ## 📄 License
 
 MIT License — Free to use for learning and portfolio purposes.
+#   m e r n - e c o m m e r c e  
+ 
